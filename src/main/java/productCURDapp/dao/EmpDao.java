@@ -17,11 +17,11 @@ public class EmpDao {
 	@Autowired
 	public HibernateTemplate hibernateTemplate;
 	
-	//CREATE
+	
 	@Transactional
 	public void createEmployee(Employee emp)
 	{
-		this.hibernateTemplate.save(emp);
+		this.hibernateTemplate.saveOrUpdate(emp);
 	}
 	
 	//GET ALL
@@ -32,6 +32,7 @@ public class EmpDao {
 	}
 	
 	//DELETE 
+	@Transactional
 	public void deleteEmployee(int pid)
 	{
 		Employee e=this.hibernateTemplate.load(Employee.class,pid);
